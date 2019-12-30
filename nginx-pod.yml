@@ -10,6 +10,12 @@ spec:
   - image: nginx
     name: nginx
     resources: {}
+    env:
+      - name: SPECIAL_APP_KEY
+        valueFrom: 
+          configMapKeyRef: 
+            name: my-map
+            key: key1
   dnsPolicy: ClusterFirst
   restartPolicy: Never
 status: {}
