@@ -9,7 +9,14 @@ spec:
   containers:
   - image: busybox
     name: nginx
+    volumeMounts:
+    - name: secret-volume
+      mountPath: /tmp/secret
     resources: {}
   dnsPolicy: ClusterFirst
+  volumes:
+  - name: secret-volume
+    secret:
+      secretName: my-secret
   restartPolicy: Never
 status: {}
