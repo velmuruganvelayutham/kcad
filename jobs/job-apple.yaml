@@ -1,0 +1,23 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  creationTimestamp: null
+  labels:
+    run: job-example
+    group: email
+  name: job-example-apple
+spec:
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: job-example
+        group: email
+    spec:
+      containers:
+      - image: busybox
+        command: ["/bin/sh","-c","echo job - processing apple && sleep 5"]
+        name: job-example
+        resources: {}
+      restartPolicy: OnFailure
+status: {}
