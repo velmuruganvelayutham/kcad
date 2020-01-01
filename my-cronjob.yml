@@ -1,0 +1,30 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  creationTimestamp: null
+  labels:
+    run: cron-job
+  name: cron-job
+spec:
+  concurrencyPolicy: Allow
+  jobTemplate:
+    metadata:
+      creationTimestamp: null
+    spec:
+      template:
+        metadata:
+          creationTimestamp: null
+          labels:
+            run: cron-job
+        spec:
+          containers:
+          - args:
+            - /bin/sh
+            - -c
+            - date; echo Hello from kubernetes cluster
+            image: busybox
+            name: cron-job
+            resources: {}
+          restartPolicy: OnFailure
+  schedule: '*/1 * * * *'
+status: {}
