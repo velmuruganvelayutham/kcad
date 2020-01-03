@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: liveness-exec
+  name: liveness-exec
+spec:
+  containers:
+  - image: k8s.gcr.io/busybox
+    name: liveness-exec
+    command: 
+    - /bin/sh
+    - -c
+    args: [" touch /tmp/liveness-file.txt; sleep 30; rm -f /tmp/liveness-file.txt; sleep 300"]
+    resources: {}
+    livenessProbe:
+      exec:
+        command:
+          - cat
+          - /tmp/liveness-file.txt
+  dnsPolicy: ClusterFirst
+  restartPolicy: Never
+status: {}
