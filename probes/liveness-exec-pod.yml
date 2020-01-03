@@ -20,5 +20,5 @@ spec:
           - cat
           - /tmp/liveness-file.txt
   dnsPolicy: ClusterFirst
-  restartPolicy: Never
+  restartPolicy: Always
 status: {}
